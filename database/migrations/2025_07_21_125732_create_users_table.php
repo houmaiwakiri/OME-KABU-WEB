@@ -7,18 +7,17 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration {
     public function up(): void
     {
-        Schema::create('user', function (Blueprint $table) {
-            $table->id();
-            $table->string('user_id')->unique(); // ログインID
-            $table->string('password');          // ハッシュ化されたパスワード
-            $table->string('user_name');         // 表示名
-            $table->integer('auth_id')->default(1); // 権限（拡張用）
-            $table->timestamps(); // create_at / updated_at
+        Schema::create('users', function (Blueprint $table) {
+            $table->string('user_id')->primary(); // 主キー
+            $table->string('password');
+            $table->string('user_name');
+            $table->integer('auth_id')->default(1);
+            $table->timestamps();
         });
     }
 
     public function down(): void
     {
-        Schema::dropIfExists('user');
+        Schema::dropIfExists('users');
     }
 };
