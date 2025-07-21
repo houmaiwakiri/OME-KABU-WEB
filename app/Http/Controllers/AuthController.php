@@ -11,7 +11,7 @@ use App\Models\Token;
 
 class AuthController
 {
-  public function showLoginForm()
+  public function showLogin()
   {
     return view('login');
   }
