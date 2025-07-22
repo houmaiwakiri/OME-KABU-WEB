@@ -1,21 +1,30 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>ログイン</title>
-</head>
-<body>
-    <h2>ログイン</h2>
+@extends('layouts.app')
 
-@if ($errors->has('login_error'))
-    <div style="color:red">{{ $errors->first('login_error') }}</div>
-@endif
+@section('title', 'ログイン - 管理画面')
+@section('body_class', 'login-page')
 
-<form method="POST" action="/login">
-    @csrf
-    <input type="text" name="user_id" placeholder="ユーザーID" required><br>
-    <input type="password" name="password" placeholder="パスワード" required><br>
-    <button type="submit">ログイン</button>
-</form>
+@section('content')
+<div class="login-container">
+  <div class="login-top">
+    <div class="login-title">
+      OME-KABU-WEB<br>
+      管理画面ログイン
+    </div>
+    <div class="login-right">
+      <h2>ログイン</h2>
+      <form method="POST" action="{{ route('login') }}">
+        @csrf
+        <label for="user_id">ユーザーID</label>
+        <input type="text" id="user_id" name="user_id" required autofocus>
 
-</body>
-</html>
+        <label for="password">パスワード</label>
+        <input type="password" id="password" name="password" required>
+
+        <button type="submit">ログイン</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="login-bottom"></div>
+</div>
+@endsection
