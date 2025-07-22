@@ -18,7 +18,7 @@ WORKDIR /var/www/app
 # ソースをコピー
 COPY . .
 
-# Composerで依存インストール（productionの場合は--no-devも指定可）
+# Composerインストール
 RUN composer install
 
 # アプリケーションキー生成
@@ -30,5 +30,5 @@ RUN chmod -R 775 /var/www/app/storage /var/www/app/bootstrap/cache
 
 COPY docker/php-fpm/php.ini /usr/local/etc/php/php.ini
 
-# php-fpm起動（CMDやENTRYPOINTは環境に合わせて）
+# php-fpm起動
 CMD ["php-fpm"]

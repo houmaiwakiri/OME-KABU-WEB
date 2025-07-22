@@ -12,3 +12,5 @@ docker rm -f $(docker ps -aq)
 docker-compose down -v
 
 php artisan db:seed --class=UserSeederphp artisan db:seed --class=UserSeeder
+
+php artisan migrate:fresh
